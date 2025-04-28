@@ -41,12 +41,19 @@
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20112338.png?raw=true)
 - Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017e
 
-![alt](
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113512.png?raw=true)
 - Average number of transactions per user that made a purchase in July 2017
+
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114530.png?raw=true)
 - Average amount of money spent per session. Only include purchaser data in July 2017
+
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113648.png?raw=true)
 - Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.
+
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113742.png?raw=true)
 - Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. Add_to_cart_rate = number product  add to cart/number product view. Purchase_rate = number product purchase/number product view.
 
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114623.png?raw=true)
 Overall Conversion Funnel:
 
 100% of sessions started with product views.
