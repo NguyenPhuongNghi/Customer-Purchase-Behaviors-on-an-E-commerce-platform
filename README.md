@@ -13,22 +13,26 @@
 ## 3. Tools Used
 - BigQuery: Data extraction and transformation with advanced SQL queries.
 - Google Cloud Console: Query execution and data exploration.
-## 4. Key Features and Insights
-Cohort Funnel Calculation: Tracked user behavior from product view ➔ add to cart ➔ completed purchase.
+## 4. Key Features
+- Cohort Funnel Calculation: Tracked user behavior from product view ➔ add to cart ➔ completed purchase.
 
-Behavior Rate Calculation:
+- Behavior Rate Calculation:
 
-Add-to-Cart Rate = (Number of products added to cart) ÷ (Number of products viewed).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add-to-Cart Rate = (Number of products added to cart) ÷ (Number of products viewed).
 
-Purchase Rate = (Number of products purchased) ÷ (Number of products viewed).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purchase Rate = (Number of products purchased) ÷ (Number of products viewed).
 
-Session Behavior Analysis:
+- Session Behavior Analysis:
 
-Mapped how customers move through different e-commerce actions within a session.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mapped how customers move through different e-commerce actions within a session.
 
-Identified stages with the highest drop-off rates.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identified stages with the highest drop-off rates.
 
-## 5. Key Insights and Conclusion
+## 5. Analysis
+
+
+
+
 Overall Conversion Funnel:
 
 100% of sessions started with product views.
