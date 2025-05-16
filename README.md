@@ -5,10 +5,10 @@
 - The goal is to understand customer interactions, conversion funnel efficiency (from product view to add-to-cart to purchase), and provide actionable insights to optimize marketing and sales strategies.
 
 ## 2. Dataset Description
-- Source: Public Google Analytics sample dataset (bigquery-public-data.google_analytics_sample.ga_sessions_2017*).
-- Period Analyzed: 2017.
-- Volume: Millions of session records including user behaviors, product views, cart additions, and transactions.
-- Key Fields: date, fullVisitorId, hits.product.productRevenue, hits.eCommerceAction.action_type, trafficSource.source, device.deviceCategory.
+**- Source:** Public Google Analytics sample dataset (bigquery-public-data.google_analytics_sample.ga_sessions_2017*).
+**- Year:** 2017.
+**- Volume:** Millions of session records including user behaviors, product views, cart additions, and transactions.
+**- Key Fields:** date, fullVisitorId, hits.product.productRevenue, hits.eCommerceAction.action_type, trafficSource.source, device.deviceCategory.
   
 ## 3. Tools Used
 - BigQuery: Data extraction and transformation with advanced SQL queries.
