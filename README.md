@@ -43,7 +43,7 @@ GROUP BY month
 ORDER BY month;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20161357.png?raw=true)
 
 **:two: Calculate bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit)**
 <br>**:rocket: Query:**
@@ -63,7 +63,7 @@ FROM(
   ORDER BY total_visits DESC);
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20161442.png?raw=true)
 
 **:three: Revenue by traffic source by week, by month in June 2017**
 <br>**:rocket: Query:**
@@ -103,7 +103,7 @@ select * from week_data
 order by source,time_type,time;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20162255.png?raw=true)
 
 **:four: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017e**
 <br>**:rocket: Query:**
@@ -128,7 +128,7 @@ FROM (
 )
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20162419.png?raw=true)
 
 **:five: Average number of transactions per user that made a purchase in July 2017**
 <br>**:rocket: Query:**
@@ -144,7 +144,7 @@ and product.productRevenue is not null
 group by month;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20162534.png?raw=true)
 
 **:six: Average amount of money spent per session. Only include purchaser data in July 2017**
 <br>**:rocket: Query:**
@@ -160,7 +160,7 @@ where product.productRevenue is not null
 group by month;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20162619.png?raw=true)
 
 **:seven: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.**
 <br>**:rocket: Query:**
@@ -183,7 +183,7 @@ group by other_purchased_product
 order by quantity desc;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20162707.png?raw=true)
 
 **:eight: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. Add_to_cart_rate = number product  add to cart/number product view. Purchase_rate = number product purchase/number product view.**
 <br>**:rocket: Query:**
