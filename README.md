@@ -1,5 +1,5 @@
 # Customer Purchase Behaviors on Google Merchandise Store in 2017
-**Link BigQuery: https://console.cloud.google.com/bigquery?sq=42610209294:a6a3284128924aa7a42d825d87cbe07c**
+**:pushpin: Link BigQuery: https://console.cloud.google.com/bigquery?sq=42610209294:a6a3284128924aa7a42d825d87cbe07c**
 ## 1. Project Overview
 - This project aims to analyze customer purchase behaviors by querying large-scale e-commerce session data stored in Google BigQuery.
 - The goal is to understand customer interactions, conversion funnel efficiency (from product view to add-to-cart to purchase), and provide actionable insights to optimize marketing and sales strategies.
@@ -29,36 +29,36 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identified stages with the highest drop-off rates.
 
 ## 5. Analysis
-**- Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
+**:one: Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20105728.png?raw=true)
 
-**- Calculate bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit)**
+**:two: Calculate bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit)**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20105917.png?raw=true)
 
-**- Revenue by traffic source by week, by month in June 2017**
+**:three: Revenue by traffic source by week, by month in June 2017**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20112312.png?raw=true)
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20112338.png?raw=true)
 
-**- Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017e**
+**:four: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017e**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113512.png?raw=true)
 
-**- Average number of transactions per user that made a purchase in July 2017**
+**:five: Average number of transactions per user that made a purchase in July 2017**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114530.png?raw=true)
 
-**- Average amount of money spent per session. Only include purchaser data in July 2017**
+**:six: Average amount of money spent per session. Only include purchaser data in July 2017**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113648.png?raw=true)
 
-**- Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.**
+**:seven: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113742.png?raw=true)
 
-**- Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. Add_to_cart_rate = number product  add to cart/number product view. Purchase_rate = number product purchase/number product view.**
+**:eight: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. Add_to_cart_rate = number product  add to cart/number product view. Purchase_rate = number product purchase/number product view.**
 
 ![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114623.png?raw=true)
 
