@@ -72,7 +72,7 @@ with
 month_data as(
   SELECT
     "Month" as time_type,
-    format_date("%Y%m", parse_date("%Y%m%d", date)) as month,
+    format_date("%Y%m", parse_date("%Y%m%d", date)) as time,
     trafficSource.source AS source,
     SUM(p.productRevenue)/1000000 AS revenue
   FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
@@ -86,7 +86,7 @@ month_data as(
 week_data as(
   SELECT
     "Week" as time_type,
-    format_date("%Y%W", parse_date("%Y%m%d", date)) as week,
+    format_date("%Y%W", parse_date("%Y%m%d", date)) as time,
     trafficSource.source AS source,
     SUM(p.productRevenue)/1000000 AS revenue
   FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
@@ -100,7 +100,7 @@ week_data as(
 select * from month_data
 union all
 select * from week_data
-order by source,time_type;
+order by source,time_type,time;
 ```
 **:round_pushpin: Result:**
 ![alt]()
