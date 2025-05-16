@@ -210,7 +210,7 @@ select
 from product_data;
 ```
 **:round_pushpin: Result:**
-![alt]()
+![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-05-16%20163340.png?raw=true)
 
 ## 6. Insights
 **- Overall Conversion Funnel:**
