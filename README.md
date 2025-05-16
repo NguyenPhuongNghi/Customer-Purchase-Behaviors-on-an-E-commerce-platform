@@ -30,37 +30,187 @@
 
 ## 5. Analysis
 **:one: Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20105728.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+SELECT 
+  FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d',date)) as month,-- convert "date" field from string to date and format the date in "YYYY-MM"
+  SUM(totals.visits) as visits,
+  SUM(totals.pageviews) as pageviews,
+  SUM(totals.transactions) as transactions
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+WHERE _table_suffix between '0101'and '0331' -- extract data for Jan, Feb and March 2017
+GROUP BY month
+ORDER BY month;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:two: Calculate bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit)**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20105917.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+SELECT  
+  source,
+  total_visits,
+  total_no_of_bounces,
+  round(cast(total_no_of_bounces as decimal)/total_visits*100,3) as bounce_rate
+FROM(
+  SELECT
+    trafficSource.source as source,
+    sum(totals.visits) as total_visits,
+    sum(totals.bounces) as total_no_of_bounces
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*` -- extract data  for July 2017
+  GROUP BY source
+  ORDER BY total_visits DESC);
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:three: Revenue by traffic source by week, by month in June 2017**
+<br>**:rocket: Query:**
+```sql
+with 
+month_data as(
+  SELECT
+    "Month" as time_type,
+    format_date("%Y%m", parse_date("%Y%m%d", date)) as month,
+    trafficSource.source AS source,
+    SUM(p.productRevenue)/1000000 AS revenue
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
+    unnest(hits) hits,
+    unnest(product) p
+  WHERE p.productRevenue is not null
+  GROUP BY 1,2,3
+  order by revenue DESC
+),
 
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20112312.png?raw=true)
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20112338.png?raw=true)
+week_data as(
+  SELECT
+    "Week" as time_type,
+    format_date("%Y%W", parse_date("%Y%m%d", date)) as week,
+    trafficSource.source AS source,
+    SUM(p.productRevenue)/1000000 AS revenue
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
+    unnest(hits) hits,
+    unnest(product) p
+  WHERE p.productRevenue is not null
+  GROUP BY 1,2,3
+  order by revenue DESC
+)
+
+select * from month_data
+union all
+select * from week_data
+order by source,time_type;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:four: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017e**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113512.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+SELECT
+  month,
+  total_pageviews_purchaser/purchaser as avg_pageviews_purchase,
+  total_pageviews_non_purchaser/non_purchaser as avg_pageviews_non_purchase
+FROM (
+  SELECT 
+    FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d',date)) AS month,
+    COUNT(DISTINCT CASE WHEN totals.transactions >=1 AND product.productRevenue IS NOT NULL THEN fullVisitorId END) AS purchaser,
+    COUNT(DISTINCT CASE WHEN totals.transactions IS NULL and product.productRevenue IS NULL THEN fullVisitorId END) AS non_purchaser,
+    SUM(CASE WHEN totals.transactions >=1 AND product.productRevenue IS NOT NULL THEN totals.pageviews END) AS total_pageviews_purchaser,
+    SUM(CASE WHEN totals.transactions IS NULL AND product.productRevenue IS NULL THEN totals.pageviews END) AS total_pageviews_non_purchaser
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
+  UNNEST (hits) hits,
+  UNNEST (hits.product) product
+  WHERE _table_suffix between '0601'and '0731' -- extract data for June, July 2017
+  GROUP BY month
+  ORDER BY month
+)
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:five: Average number of transactions per user that made a purchase in July 2017**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114530.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+select
+    format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
+    sum(totals.transactions)/count(distinct fullvisitorid) as Avg_total_transactions_per_user
+from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
+    ,unnest (hits) hits,
+    unnest(product) product
+where  totals.transactions>=1
+and product.productRevenue is not null
+group by month;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:six: Average amount of money spent per session. Only include purchaser data in July 2017**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113648.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+select
+    format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
+    ((sum(product.productRevenue)/sum(totals.visits))/power(10,6)) as avg_revenue_by_user_per_visit
+from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
+  ,unnest(hits) hits
+  ,unnest(product) product
+where product.productRevenue is not null
+  and totals.transactions>=1
+group by month;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:seven: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.**
-
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20113742.png?raw=true)
+<br>**:rocket: Query:**
+```sql
+select
+    product.v2productname as other_purchased_product,
+    sum(product.productQuantity) as quantity
+from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+    unnest(hits) as hits,
+    unnest(hits.product) as product
+where fullvisitorid in (select distinct fullvisitorid
+                        from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+                        unnest(hits) as hits,
+                        unnest(hits.product) as product
+                        where product.v2productname = "YouTube Men's Vintage Henley"
+                        and product.productRevenue is not null)
+  and product.v2productname != "YouTube Men's Vintage Henley"
+  and product.productRevenue is not null
+group by other_purchased_product
+order by quantity desc;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 **:eight: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. Add_to_cart_rate = number product  add to cart/number product view. Purchase_rate = number product purchase/number product view.**
+<br>**:rocket: Query:**
+```sql
+with product_data as(
+select
+    format_date('%Y%m', parse_date('%Y%m%d',date)) as month,
+    count(CASE WHEN eCommerceAction.action_type = '2' THEN product.v2ProductName END) as num_product_view,
+    count(CASE WHEN eCommerceAction.action_type = '3' THEN product.v2ProductName END) as num_add_to_cart,
+    count(CASE WHEN eCommerceAction.action_type = '6' and product.productRevenue is not null THEN product.v2ProductName END) as num_purchase
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+,UNNEST(hits) as hits
+,UNNEST (hits.product) as product
+where _table_suffix between '20170101' and '20170331'
+and eCommerceAction.action_type in ('2','3','6')
+group by month
+order by month
+)
 
-![alt](https://github.com/NguyenPhuongNghi/Customer-Purchase-Behaviors-on-an-E-commerce-platform/blob/main/images/Screenshot%202025-04-28%20114623.png?raw=true)
+select
+    *,
+    round(num_add_to_cart/num_product_view * 100, 2) as add_to_cart_rate,
+    round(num_purchase/num_product_view * 100, 2) as purchase_rate
+from product_data;
+```
+**:round_pushpin: Result:**
+![alt]()
 
 ## 6. Insights
 **- Overall Conversion Funnel:**
