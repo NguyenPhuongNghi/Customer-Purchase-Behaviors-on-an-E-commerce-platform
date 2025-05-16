@@ -5,24 +5,24 @@
 - The goal is to understand customer interactions, conversion funnel efficiency (from product view to add-to-cart to purchase), and provide actionable insights to optimize marketing and sales strategies.
 
 ## 2. Dataset Description
-**- Source:** Public Google Analytics sample dataset (bigquery-public-data.google_analytics_sample.ga_sessions_2017*).
-**- Year:** 2017.
-**- Volume:** Millions of session records including user behaviors, product views, cart additions, and transactions.
-**- Key Fields:** date, fullVisitorId, hits.product.productRevenue, hits.eCommerceAction.action_type, trafficSource.source, device.deviceCategory.
+- **Source:** Public Google Analytics sample dataset (bigquery-public-data.google_analytics_sample.ga_sessions_2017*).
+- **Year:** 2017.
+- **Volume:** Millions of session records including user behaviors, product views, cart additions, and transactions.
+- **Key Fields:** date, fullVisitorId, hits.product.productRevenue, hits.eCommerceAction.action_type, trafficSource.source, device.deviceCategory.
   
 ## 3. Tools Used
-- BigQuery: Data extraction and transformation with advanced SQL queries.
-- Google Cloud Console: Query execution and data exploration.
+- **BigQuery:** Data extraction and transformation with advanced SQL queries.
+- **Google Cloud Console:** Query execution and data exploration.
 ## 4. Key Features
-- Cohort Funnel Calculation: Tracked user behavior from product view ➔ add to cart ➔ completed purchase.
+- **Cohort Funnel Calculation:** Tracked user behavior from product view ➔ add to cart ➔ completed purchase.
 
-- Behavior Rate Calculation:
+- **Behavior Rate Calculation:**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add-to-Cart Rate = (Number of products added to cart) ÷ (Number of products viewed).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purchase Rate = (Number of products purchased) ÷ (Number of products viewed).
 
-- Session Behavior Analysis:
+- **Session Behavior Analysis:**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mapped how customers move through different e-commerce actions within a session.
 
