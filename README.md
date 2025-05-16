@@ -1,5 +1,5 @@
 # Customer Purchase Behaviors on Google Merchandise Store in 2017
-**:pushpin: Link BigQuery: https://console.cloud.google.com/bigquery?sq=42610209294:a6a3284128924aa7a42d825d87cbe07c**
+**:pushpin: Link BigQuery: [link](https://console.cloud.google.com/bigquery?sq=42610209294:a6a3284128924aa7a42d825d87cbe07c)**
 ## 1. Project Overview
 - This project aims to analyze customer purchase behaviors by querying large-scale e-commerce session data stored in Google BigQuery.
 - The goal is to understand customer interactions, conversion funnel efficiency (from product view to add-to-cart to purchase), and provide actionable insights to optimize marketing and sales strategies.
